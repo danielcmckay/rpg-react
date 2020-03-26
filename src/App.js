@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import Map from "./components/Map/Map";
+import Map1 from "./components/Maps/Map1";
 import Player from "./components/Player/Player";
 
 const App = () => {
-  const [playerPosition, movePlayer] = useState([600, 470]);
+  const [playerPosition, movePlayer] = useState([-400, -20]);
   const [stepFoot, setStep] = useState("rightstep");
-  const [lastStep, setLastStep] = useState('right')
+  const [lastStep, setLastStep] = useState("right");
   const [playerView, setView] = useState("up");
 
   const movement = (x, y) => {
@@ -18,45 +18,42 @@ const App = () => {
     e.preventDefault();
     if (stepFoot === "rightstep") {
       setStep("middlestep");
-      setLastStep('right')
-    } else if (stepFoot === "middlestep" && lastStep === 'right') {
+      setLastStep("right");
+    } else if (stepFoot === "middlestep" && lastStep === "right") {
       setStep("leftstep");
-    } else if (stepFoot === "middlestep" && lastStep === 'left') {
+    } else if (stepFoot === "middlestep" && lastStep === "left") {
       setStep("rightstep");
-    } else if (stepFoot === 'leftstep') {
-      setStep('middlestep');
-      setLastStep('left')
-    }
-    else {
+    } else if (stepFoot === "leftstep") {
+      setStep("middlestep");
+      setLastStep("left");
+    } else {
       setStep("rightstep");
     }
+
     if (e.which === 40) {
       setView("down");
-      movement(0, 7);
+      movement(0, 10);
     } else if (e.which === 38) {
       setView("up");
-      movement(0, -7);
+      movement(0, -10);
     } else if (e.which === 39) {
       setView("right");
-
-      movement(7, 0);
+      movement(10, 0);
     } else if (e.which === 37) {
       setView("left");
-
-      movement(-7, 0);
+      movement(-10, 0);
     }
-    console.log(e.which);
   };
 
   return (
-    <div className="App" tabIndex={1} onKeyDownCapture={keyPressHandler}>
-      <Map />
+    <div className="App" tabIndex={10} onKeyPress={keyPressHandler}>
       <Player
         position={playerPosition}
         movement={movement}
         view={playerView}
         foot={stepFoot}
       />
+      <Map1 />
     </div>
   );
 };

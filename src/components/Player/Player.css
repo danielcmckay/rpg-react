@@ -2,9 +2,8 @@
   height: 50px;
   width: 50px;
  
-  position: absolute;
-  top: 500;
-  left: 500;
+  position: relative;
+  z-index: 1000;
   border: none;
   outline: none;
 }
