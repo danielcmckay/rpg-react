@@ -46,7 +46,7 @@ const App = () => {
   };
 
   return (
-    <div className="App" tabIndex={10} onKeyPress={keyPressHandler}>
+    <div className="App" tabIndex={10} onKeyDown={keyPressHandler}>
       <Player
         position={playerPosition}
         movement={movement}
